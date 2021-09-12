@@ -4,6 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import com.bridgelabz.app.model.EmployeeBean;
 
 
 @SpringBootApplication
@@ -13,13 +16,18 @@ public class SpringCoreConceptsApplication {
 	private static final Logger logger= LoggerFactory.getLogger(SpringCoreConceptsApplication.class);
 
 	public static void main(String[] args) {
-//	UC1 case
-		SpringApplication.run(SpringCoreConceptsApplication.class, args);
+//		UC1 case
+//		SpringApplication.run(SpringCoreConceptsApplication.class, args);
 		System.out.println("Hello from SpringCoreConcepts");
 		
-//		adding logger message
-		logger.info("spring core concepts from logger");
+//		UC2 adding logger message
+//		logger.info("spring core concepts from logger");
 
+//		UC3 Dependency Injection
+		ApplicationContext context=SpringApplication.run(SpringCoreConceptsApplication.class, args);
+		EmployeeBean bean=context.getBean(EmployeeBean.class);
+		bean.setEmpId(101);
+		bean.setEmpName("john");
+		bean.showDetails();
 	}
-
 }
